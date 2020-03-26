@@ -12,7 +12,7 @@ class Blogs(APIView):
         ]})
 
 
-@url_decoration(path="api/blog/<blog_id>", name="blog")
+@url_decoration(re_path=r'^api/blog/(?P<blog_id>\d+)/?$', name="blog")
 class Blog(APIView):
     def get(self, request, blog_id):
         return JsonResponse({'id': 1, 'title': f'Nice Blog {blog_id}'})
